@@ -19,5 +19,12 @@
 			}
 			return shuffleCollection;
 		}
+
+		public static IEnumerable<T> ShuffleUsingLinq<T>(this IEnumerable<T> collection)
+		{
+			var generator = new Random();
+			collection = collection.OrderBy(x => generator.Next());
+			return collection;
+		}
 	}
 }

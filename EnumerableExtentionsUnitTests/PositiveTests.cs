@@ -1,6 +1,4 @@
 ﻿using Extentions;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace EnumerableExtentionsUnitTests
 {
@@ -36,6 +34,13 @@ namespace EnumerableExtentionsUnitTests
 		public void Shuffle_Arrays<T>(IEnumerable<T> collection)
 		{
 			var shuffleCollection = collection.Shuffle();
+			Assert.That(IsShuffle(collection, shuffleCollection), Is.EqualTo(true));
+		}
+
+		[TestCaseSource(nameof(SourceList))]
+		public void Shuffle_Collections<T>(IEnumerable<T> collection)
+		{
+			var shuffleCollection = collection.ShuffleUsingLinq();
 			Assert.That(IsShuffle(collection, shuffleCollection), Is.EqualTo(true));
 		}
 	}
